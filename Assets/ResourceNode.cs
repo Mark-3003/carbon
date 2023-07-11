@@ -11,6 +11,6 @@ public class ResourceNode : MonoBehaviour
     }
     void OnMouseDown()
     {
-        player.SetNewTarget(this);
+        
     }
 }

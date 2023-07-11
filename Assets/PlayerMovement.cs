@@ -5,21 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
-    public float turnSpeed;
-
-    ResourceNode targetObject;
     Vector2 moveDirection;
-
-    void Update()
-    {
-        moveDirection = (targetObject.transform.position - transform.position);
+    Rigidbody2D rb;
+    void Awake(){
+        rb = GetComponent<Rigidbody2D>();
     }
-    void FixedUpdate()
-    {
-        Debug.Log("Magnitude: " + moveDirection.magnitude);
+    void Update(){
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
     }
-    public void SetNewTarget(ResourceNode _resource)
-    {
-        targetObject = _resource;
+    void FixedUpdate(){
+        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.deltaTime);
     }
 }
