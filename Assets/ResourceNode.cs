@@ -5,12 +5,11 @@ using UnityEngine;
 public class ResourceNode : MonoBehaviour
 {
     PlayerMovement player;
-    void Awake()
-    {
-        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
-    }
     void OnMouseDown()
     {
-        
+        player.SetNewTarget(transform, gameObject.layer);
+    }
+    public void SetPlayer(PlayerMovement _player){
+        player = _player;
     }
 }
